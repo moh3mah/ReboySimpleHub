@@ -162,7 +162,7 @@ local function GHVJVMR_fake_script() -- Frame.MainScript
 		script.Parent.scroll.CanvasSize = UDim2.new(0,0,0,script.Parent.scroll.UIGridLayout.AbsoluteContentSize.Y)
 	end)
 	local HttpService = game:GetService("HttpService")
-	local gotscripts = HttpService:JSONDecode(game:HttpGet(("https://pastebin.com/raw/Zc6CgJ7w"),true))
+	local gotscripts = HttpService:JSONDecode(game:HttpGet(("https://raw.githubusercontent.com/kosuke14/ReboySimpleHub/main/Scripts.json"),true))
 	function addscripts(name,stringcode)
 		local button = Instance.new("TextButton")
 		button.Name = "ScriptButton"
