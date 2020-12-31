@@ -250,44 +250,50 @@ local function APHRRIZ_fake_script() -- Frame.MainScript
 		end
 	end)
 	function createesp(plr,chr)
-		plr.Character:WaitForChild("Head")
-		if plr.Character:FindFirstChild("Head"):FindFirstChild("ESPFrame") or plr.Character:FindFirstChild("Head"):FindFirstChild("ESPInfo") then
-			plr.Character:FindFirstChild("Head"):FindFirstChild("ESPFrame"):Destroy()
-			plr.Character:FindFirstChild("Head"):FindFirstChild("ESPInfo"):Destroy()
-		end
-		local espfr = script.Parent.ESPFrame:Clone()
-		local espin = script.Parent.ESPInfo:Clone()
-		espfr.Parent = plr.Character:WaitForChild("Head")
-		espin.Parent = plr.Character:WaitForChild("Head")
-		espfr.Adornee = plr.Character:WaitForChild("Head")
-		espin.Adornee = plr.Character:WaitForChild("Head")
-		if teamcheck == true then
-			if plr.Team == game.Players.LocalPlayer.Team then
-				espfr.Enabled = false
-				espin.Enabled = false
+		if plr.Character ~= nil then
+			pcall(function()
+				plr.Character:WaitForChild("Head")
+			end)
+			if plr.Character:FindFirstChild("Head"):FindFirstChild("ESPFrame") or plr.Character:FindFirstChild("Head"):FindFirstChild("ESPInfo") then
+				plr.Character:FindFirstChild("Head"):FindFirstChild("ESPFrame"):Destroy()
+				plr.Character:FindFirstChild("Head"):FindFirstChild("ESPInfo"):Destroy()
+			end
+			local espfr = script.Parent.ESPFrame:Clone()
+			local espin = script.Parent.ESPInfo:Clone()
+			espfr.Parent = plr.Character:WaitForChild("Head")
+			espin.Parent = plr.Character:WaitForChild("Head")
+			espfr.Adornee = plr.Character:WaitForChild("Head")
+			espin.Adornee = plr.Character:WaitForChild("Head")
+			if teamcheck == true then
+				if plr.Team == game.Players.LocalPlayer.Team then
+					espfr.Enabled = false
+					espin.Enabled = false
+				else
+					espfr.Enabled = true
+					espin.Enabled = true
+				end
 			else
 				espfr.Enabled = true
 				espin.Enabled = true
 			end
+			if infohided == true then
+				espin.Enabled = false
+			end
+			if hided == true then
+				espfr.Enabled = false
+				espin.Enabled = false
+			end
+			pcall(function()
+				--plr:GetPropertyChangedSignal("Team"):Connect(function()
+				plr.Character:WaitForChild("Head"):FindFirstChild("ESPFrame").Frame.BackgroundColor3 = plr.TeamColor.Color
+				--end)
+				--plr.Character:WaitForChild("Humanoid"):GetPropertyChangedSignal("Health"):Connect(function()
+				plr.Character:FindFirstChild("Head"):FindFirstChild("ESPInfo").ESPName.Text = "Name: " .. plr.Name .. " | Health: " .. tostring(plr.Character:FindFirstChildOfClass("Humanoid").Health)
+				--end)
+			end)
 		else
-			espfr.Enabled = true
-			espin.Enabled = true
+			print(plr .. "'s Character is nil")
 		end
-		if infohided == true then
-			espin.Enabled = false
-		end
-		if hided == true then
-			espfr.Enabled = false
-			espin.Enabled = false
-		end
-		pcall(function()
-			--plr:GetPropertyChangedSignal("Team"):Connect(function()
-			plr.Character:WaitForChild("Head"):FindFirstChild("ESPFrame").Frame.BackgroundColor3 = plr.TeamColor.Color
-			--end)
-			--plr.Character:WaitForChild("Humanoid"):GetPropertyChangedSignal("Health"):Connect(function()
-			plr.Character:FindFirstChild("Head"):FindFirstChild("ESPInfo").ESPName.Text = "Name: " .. plr.Name .. " | Health: " .. tostring(plr.Character:FindFirstChildOfClass("Humanoid").Health)
-			--end)
-		end)
 	end
 --[[
 game.Players.PlayerAdded:Connect(function(plr)
