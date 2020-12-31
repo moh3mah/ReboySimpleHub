@@ -1,0 +1,18 @@
+{
+    "SpeUI": {
+    "Name": "SpectatorGUI", 
+    "Source": "loadstring(game:HttpGet(('https://pastebin.com/raw/QinfpHTx'),true))()"
+    },
+    "SpmUI": {
+    "Name": "CMDs SpammerGUI", 
+    "Source": "loadstring(game:HttpGet(('https://pastebin.com/raw/9xCaA0gX'),true))()"
+    },
+	"SoundPly": {
+    "Name": "Sound Player", 
+    "Source": "loadstring(game:HttpGet(('https://pastebin.com/raw/UCm0kwvQ'),true))()"
+    },
+	"SESP": {
+    "Name": "Simple ESPGUI", 
+    "Source": "loadstring(game:HttpGet(('https://pastebin.com/raw/Ua5ZNr1t'),true))()"
+    }
+}
