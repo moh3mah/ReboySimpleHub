@@ -14,7 +14,7 @@ local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
 --Properties:
 
 SimpleHub.Name = "SimpleHub"
-SimpleHub.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+SimpleHub.Parent = game.CoreGui
 SimpleHub.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 SimpleHub.ResetOnSpawn = false
 
