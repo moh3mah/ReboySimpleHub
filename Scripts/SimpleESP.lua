@@ -132,13 +132,13 @@ ESPName.TextStrokeTransparency = 0.000
 ESPName.TextWrapped = true
 
 abouterr.Name = "abouterr"
-abouterr.Parent = game.StarterGui.SimpleESP.Frame
+abouterr.Parent = Frame
 abouterr.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 abouterr.BackgroundTransparency = 1.000
-abouterr.Position = UDim2.new(0, 0, 0.854545474, 0)
-abouterr.Size = UDim2.new(0, 200, 0, 32)
+abouterr.Position = UDim2.new(0, 0, 0.7, 0)
+abouterr.Size = UDim2.new(1, 0, 0.3, 0)
 abouterr.Font = Enum.Font.SourceSans
-abouterr.Text = "If an error occurs, wait 3 seconds and it will be fixed."
+abouterr.Text = "If an error occurs, wait 1 seconds and it will be fixed."
 abouterr.TextColor3 = Color3.fromRGB(0, 0, 0)
 abouterr.TextScaled = true
 abouterr.TextSize = 14.000
@@ -268,7 +268,7 @@ local function APHRRIZ_fake_script() -- Frame.MainScript
 	function createesp(plr,chr)
 		if plr.Character ~= nil then
 			local suc,err = pcall(function()
-				plr.Character:WaitForChild("Head",3)
+				plr.Character:WaitForChild("Head",1)
 			end)
 			if suc == false then
 				print(err)
