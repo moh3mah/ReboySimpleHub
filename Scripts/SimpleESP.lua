@@ -14,6 +14,7 @@ local ESPFrame = Instance.new("BillboardGui")
 local Frame_2 = Instance.new("Frame")
 local ESPInfo = Instance.new("BillboardGui")
 local ESPName = Instance.new("TextLabel")
+local abouterr = Instance.new("TextLabel")
 
 --Properties:
 
@@ -129,6 +130,21 @@ ESPName.TextScaled = true
 ESPName.TextSize = 14.000
 ESPName.TextStrokeTransparency = 0.000
 ESPName.TextWrapped = true
+
+abouterr.Name = "abouterr"
+abouterr.Parent = game.StarterGui.SimpleESP.Frame
+abouterr.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+abouterr.BackgroundTransparency = 1.000
+abouterr.Position = UDim2.new(0, 0, 0.854545474, 0)
+abouterr.Size = UDim2.new(0, 200, 0, 32)
+abouterr.Font = Enum.Font.SourceSans
+abouterr.Text = "If an error occurs, wait 3 seconds and it will be fixed."
+abouterr.TextColor3 = Color3.fromRGB(0, 0, 0)
+abouterr.TextScaled = true
+abouterr.TextSize = 14.000
+abouterr.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
+abouterr.TextStrokeTransparency = 0.000
+abouterr.TextWrapped = true
 
 -- Scripts:
 
@@ -252,13 +268,11 @@ local function APHRRIZ_fake_script() -- Frame.MainScript
 	function createesp(plr,chr)
 		if plr.Character ~= nil then
 			local suc,err = pcall(function()
-				plr.Character:WaitForChild("Head")
+				plr.Character:WaitForChild("Head",3)
 			end)
 			if suc == false then
 				print(err)
-				pcall(function()
-					plr.Character:WaitForChild("Head")
-				end)
+				return
 			end
 			if plr.Character:FindFirstChild("Head"):FindFirstChild("ESPFrame") or plr.Character:FindFirstChild("Head"):FindFirstChild("ESPInfo") then
 				plr.Character:FindFirstChild("Head"):FindFirstChild("ESPFrame"):Destroy()
@@ -325,9 +339,12 @@ end
 		for i,plr in ipairs(game.Players:GetPlayers()) do
 			if plr ~= game.Players.LocalPlayer then
 				if plr.Character ~= nil then
-					pcall(function()
+					local suc,err = pcall(function()
 						createesp(plr,plr.Character)	
 					end)
+					if suc == false then
+						print(err)
+					end
 				end
 			end
 		end
