@@ -251,9 +251,15 @@ local function APHRRIZ_fake_script() -- Frame.MainScript
 	end)
 	function createesp(plr,chr)
 		if plr.Character ~= nil then
-			pcall(function()
+			local suc,err = pcall(function()
 				plr.Character:WaitForChild("Head")
 			end)
+			if suc == false then
+				print(err)
+				pcall(function()
+					plr.Character:WaitForChild("Head")
+				end)
+			end
 			if plr.Character:FindFirstChild("Head"):FindFirstChild("ESPFrame") or plr.Character:FindFirstChild("Head"):FindFirstChild("ESPInfo") then
 				plr.Character:FindFirstChild("Head"):FindFirstChild("ESPFrame"):Destroy()
 				plr.Character:FindFirstChild("Head"):FindFirstChild("ESPInfo"):Destroy()
