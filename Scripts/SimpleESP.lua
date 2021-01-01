@@ -325,7 +325,9 @@ end
 		for i,plr in ipairs(game.Players:GetPlayers()) do
 			if plr ~= game.Players.LocalPlayer then
 				if plr.Character ~= nil then
-					createesp(plr,plr.Character)
+					pcall(function()
+						createesp(plr,plr.Character)	
+					end)
 				end
 			end
 		end
