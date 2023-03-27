@@ -1,0 +1,14 @@
+loadstring(game:HttpGet(('https://pastefy.ga/xBdd9GId/raw'),true))()
+
+notifLib:CreateDefaultNotif({
+
+  TweenSpeed = 1,
+
+  Title = "تم تفعيل",
+
+  Text = "تم تطوير من قبل كتكوري.ZR",
+
+  Duration = 5
+
+})
+
